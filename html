@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIGO - AI英語塾 体験予約</title>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #f9fafd;
+      color: #222;
+      margin: 0; padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #0052cc;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+      background: white;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      color: #0052cc;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1.8px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      font-family: inherit;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #0052cc;
+      outline: none;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button {
+      background-color: #0052cc;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #003d99;
+    }
+    .notice {
+      text-align: center;
+      margin-top: 1rem;
+      color: #007700;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    /* SNS icons container */
+    .sns-icons {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .sns-icons img {
+      width: 36px;
+      height: 36px;
+      margin: 0 8px;
+      vertical-align: middle;
+      cursor: pointer;
+      filter: grayscale(100%);
+      transition: filter 0.3s;
+    }
+    .sns-icons img:hover {
+      filter: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>AIGO AI英語塾</h1>
+</header>
+
+<main>
+  <h2>体験授業 予約フォーム</h2>
+
+  <form id="reservationForm">
+    <label for="name">お名前<span style="color:red;">*</span></label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">メールアドレス<span style="color:red;">*</span></label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">電話番号<span style="color:red;">*</span></label>
+    <input type="tel" id="phone" name="phone" required pattern="[\d\s\-]+" placeholder="例: 090-1234-5678" />
+
+    <label for="course">希望コース<span style="color:red;">*</span></label>
+    <select id="course" name="course" required>
+      <option value="">選択してください</option>
+      <option value="中学生向け基礎英語">中学生向け基礎英語</option>
+      <option value="高校生向け受験対策">高校生向け受験対策</option>
+      <option value="英検・TOEIC対策">英検・TOEIC対策</option>
+    </select>
+
+    <label for="school">通っている学校</label>
+    <input type="text" id="school" name="school" placeholder="例: ○○中学校、△△高校" />
+
+    <label for="textbook">教科書名</label>
+    <input type="text" id="textbook" name="textbook" placeholder="例: New Crown, 英検準2級対策テキスト" />
+
+    <label for="unit">現在学習中の単元</label>
+    <input type="text" id="unit" name="unit" placeholder="例: 現在完了形、仮定法" />
+
+    <label for="weakAreas">苦手な分野や文法事項</label>
+    <textarea id="weakAreas" name="weakAreas" placeholder="単語、文法、長文、リスニングなど、具体的な苦手分野を教えてください"></textarea>
+
+    <label for="dateTime">予約希望日時<span style="color:red;">*</span></label>
+    <select id="dateTime" name="dateTime" required>
+      <option value="">日時を選択してください</option>
+    </select>
+
+    <button type="submit">予約する</button>
+  </form>
+
+  <p class="notice" id="submitNotice" style="display:none;">
+    ご予約ありがとうございます。自動返信メールを送信しましたので、メールをご確認ください。
+  </p>
+
+  <div class="sns-icons" aria-label="SNSリンク">
+    <!-- ここにSNSロゴを入れます。例として仮置き -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Twitter_icon.svg" alt="Twitter" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" />
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 AIGO AI英語塾
+</footer>
+
+<script>
+  // 今日の日付を取得
+  function formatDate(date) {
+    return date.toISOString().split('T')[0];
+  }
+
+  // 予約可能な時間帯の設定
+  const reservationSelect = document.getElementById('dateTime');
+
+  // 予約可能日を今から14日間分表示（調整可能）
+  const daysToShow = 14;
+  const now = new Date();
+
+  function addOption(date, hour) {
+    // 表示例：2025-07-11 17:00 - 18:00
+    const optionText = `${date.toLocaleDateString()} ${hour}:00 - ${hour + 1}:00`;
+    const optionValue = `${date.toISOString().split('T')[0]}T${hour.toString().padStart(2, '0')}:00`;
+    const option = document.createElement('option');
+    option.value = optionValue;
+    option.textContent = optionText;
+    reservationSelect.appendChild(option);
+  }
+
+  for(let i=0; i<daysToShow; i++) {
+    const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    const day = date.getDay(); // 0=日曜, 6=土曜
+    if(day === 0) continue; // 日曜は予約不可
+
+    // 平日（月〜金） 17時〜21時
+    if(day >= 1 && day <= 5) {
+      for(let h=17; h<=20; h++) {
+        addOption(date, h);
+      }
+    }
+    // 土曜 13時〜21時
+    if(day === 6) {
+      for(let h=13; h<=20; h++) {
+        addOption(date, h);
+      }
+    }
+  }
+
+  // フォーム送信処理
+  document.getElementById('reservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // 簡易バリデーション（ブラウザの標準に加え電話番号パターンなどは属性で対応済み）
+
+    // 送信処理（今回は画面表示のみ。実際はサーバー連携必要）
+    // ここでサーバーへPOSTやメール送信APIを呼ぶ想定
+
+    this.style.display = 'none';
+    document.getElementById('submitNotice').style.display = 'block';
+
+    // TODO: ここでメール自動返信などサーバー処理に繋げる
+  });
+</script>
+
+</body>
+</html>
